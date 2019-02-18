@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hands-On ML 第一章 Notes &amp; Exercises | Dream Bigger</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="摘要回答整理 Hands On Machine Learning &amp; Tensorflow, 中文版 第一章练习题.以及一些零散笔记.">
+<meta name="keywords" content="Hands On Machine Learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hands-On ML 第一章 Notes &amp; Exercises">
+<meta property="og:url" content="https://aweffr.github.io/2019/02/18/hands-on-problem-set-1/index.html">
+<meta property="og:site_name" content="Dream Bigger">
+<meta property="og:description" content="摘要回答整理 Hands On Machine Learning &amp; Tensorflow, 中文版 第一章练习题.以及一些零散笔记.">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-02-18T06:18:59.151Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hands-On ML 第一章 Notes &amp; Exercises">
+<meta name="twitter:description" content="摘要回答整理 Hands On Machine Learning &amp; Tensorflow, 中文版 第一章练习题.以及一些零散笔记.">
+  
+    <link rel="alternate" href="/atom.xml" title="Dream Bigger" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Dream Bigger</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://aweffr.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-hands-on-problem-set-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/18/hands-on-problem-set-1/" class="article-date">
+  <time datetime="2019-02-18T06:12:31.000Z" itemprop="datePublished">2019-02-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Hands-On ML 第一章 Notes &amp; Exercises
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>回答整理 <a href="https://www.amazon.com/Hands-Machine-Learning-Scikit-Learn-TensorFlow/dp/1491962291" target="_blank">Hands On Machine Learning & Tensorflow</a>, <a href="https://item.jd.com/12429306.html" target="_blank">中文版</a> 第一章练习题.<br>以及一些零散笔记.<br><a id="more"></a></p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p><strong>Warning: 标准答案见附录, 本文仅为整理学习, 和所学知识的再表述, 与标准答案存在一定偏差.</strong></p>
+<ol>
+<li><p>How would you define Machine Learning?</p>
+<ul>
+<li>机器学习是一种科学(和艺术), 让计算机编程变为<strong>从数据中学习(learn from data)</strong>.</li>
+<li>不用<strong>显式地编程</strong>就能学习(出一个 Model, 用于完成目标任务)</li>
+<li>形式化的定义: A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E.</li>
+</ul>
+</li>
+<li><p>Can you name four types of problems where it shines?</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>传统方法</th>
+<th>机器学习</th>
+<th>总结</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>垃圾邮件过滤器, 编写</td>
+<td>一长串规则, 难以覆盖所有 case</td>
+<td>数据进, 模型出, 再评估模型</td>
+<td>避免复杂手工规则</td>
+</tr>
+<tr>
+<td>垃圾邮件过滤器, 更新</td>
+<td>出现一种就要添加规则, 并保证和原有不冲突</td>
+<td>带着新数据再训练一次</td>
+<td>高可维护性</td>
+</tr>
+<tr>
+<td>语音识别</td>
+<td>没有好用的传统算法</td>
+<td>数据进, 模型出, 并且具备更好的<strong>可扩展性</strong></td>
+<td>可扩展性 + 解决传统方法难以处理的问题</td>
+</tr>
+<tr>
+<td>数据挖掘</td>
+<td>/</td>
+<td>可以试试多个 Model, 根据模型的解释, 找到初步数据 data explore 时难以发现的模式</td>
+<td>帮助人们发现未发现的数据特征</td>
+</tr>
+</tbody>
+</table>
+<ol start="4">
+<li>What are the two most common supervised tasks?</li>
+<li>Can you name four common unsupervised tasks?</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>监督式</th>
+<th>非监督式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分类</td>
+<td>聚类(k-Means, 分层聚类(HCA), 最大期望)</td>
+</tr>
+<tr>
+<td>回归</td>
+<td>可视化和降维(PCA, kernel PCA, 局部线性嵌入(LLE), t-分布随机近似嵌入(t-SNE))</td>
+</tr>
+<tr>
+<td>/</td>
+<td>关联规则学习(Apriori, Eclat)</td>
+</tr>
+</tbody>
+</table>
+<p>Note:<br>关联规则学习: 目的是挖掘大量数据, 发现属性之间的有趣联系.</p>
+<ol start="6">
+<li><p>What type of Machine Learning algorithm would you use to allow a robot to walk in various unknown terrains?</p>
+<ul>
+<li>用强化学习.  An agent(智能体), can observe the environment, select and perform actions, and get rewards or penalties in return.</li>
+</ul>
+</li>
+<li><p>要将顾客分成多个组, 你会使用什么类型的算法?</p>
+<ul>
+<li>当分组不明确时, 可以采用聚类算法生成分组类别. 当分组明确后, 就可以采用监督式学习方法, 对新用户分组到现有类别中.</li>
+</ul>
+</li>
+<li><p>什么是在线学习系统?</p>
+<ul>
+<li>批量学习(Batch leaning): 必须在全数据集上训练的的学习系统, 占用计算资源多, 通常情形下只能离线完成, 又名离线学习(offline learning). </li>
+<li><p>在线学习(Online Learning): In online learning, you train the system incrementally by feeding it data instances sequentially, either <strong>individually</strong> or by small groups called <strong>mini-batches</strong>. Each learning step is fast and cheap, so the system can learn about new data on the fly.</p>
+<p>Note: 训练, 评估, 启动学习系统是可以轻易地自动化的, 所以只要计算资源充足, 成本/时间代价可接受, 批量学习也不是不可取的.</p>
+</li>
+</ul>
+</li>
+<li><p>什么是核外学习? (What is out-of-core learning?)</p>
+<ul>
+<li>Page 23<br>ONLINE learning algorithms can also be used to train systems on huge datasets<br>that cannot fit in one machine’s main memory (this is called out-of-core learning).<br>THE algorithm loads part of the data, runs a training step on that data,<br>and repeats the process until it has run on all of the data</li>
+</ul>
+</li>
+</ol>
+<ol start="11">
+<li>What type of learning algorithm relies on a similarity measure to make predictions?<ul>
+<li>基于实例的学习(Instance-Based Learning). 比如垃圾邮件分类, 做一个相似度度量算法, 然后对新data, 计算所有既有labeled data的相似度, 根据最相似的那个labeled data来判断是否是垃圾邮件.</li>
+</ul>
+</li>
+</ol>
+<ol start="12">
+<li><p><strong>模型参数</strong> vs 学习算法的<strong>超参数</strong>(hyperparameter)</p>
+<ul>
+<li>模型参数: 决定模型对数据会怎样预测</li>
+<li>学习算法: 优化模型参数至模型参数能最好地泛化到训练集</li>
+<li>超参数: 学习算法的参数</li>
+</ul>
+</li>
+</ol>
+<ol start="13">
+<li><p>基于模型的学习算法搜索的是什么? 他们最常用的策略是什么? 他们如何做出预测?</p>
+<ul>
+<li>搜索目标: 最佳的组合参数让模型具有最好的泛化性能.</li>
+<li>策略: 构造成本函数, 成本函数用来衡量系统有多坏, 如果模型有正则化(regularization, <code>to make model simpler and reduce the risk of overfitting</code>), 则再加上一个对模型复杂度的惩罚. 策略即搜索成本函数的最小值.</li>
+</ul>
+</li>
+</ol>
+<ol start="14">
+<li>机器学习中的四个主要挑战:<ul>
+<li>书P29 - P35</li>
+<li>训练数据数量不足  <ul>
+<li>扩展阅读: 数据的不合理有效性 <a href="http://static.googleusercontent.com/media/research.google.com/fr//pubs/archive/35179.pdf" target="_blank">The Unreasonable Effectiveness of Data</a></li>
+</ul>
+</li>
+<li>训练数据不具代表性<ul>
+<li>采样集太小, 将会出现采样噪声(即非代表性数据进入数据集)</li>
+<li>采样集非常大, 很可能(因为采样方法欠妥), 导致得到非代表性数据, 例子见P31(兰登vs罗斯福的选举民意调研).</li>
+</ul>
+</li>
+<li>质量差的数据<ul>
+<li>丢弃异常情况, 或者对齐进行修复</li>
+<li>记录缺失部分特征: 忽略该特征/忽略该实例/(基于某些假设)填充缺失值</li>
+</ul>
+</li>
+<li>无关特征<ul>
+<li><strong>一个成功的机器学习项目, 关键部分是提取出一组好的用来训练的特征集, 即特征工程</strong><ul>
+<li>特征选择</li>
+<li>特征提取(整合现有特征, 产生更有用特征)</li>
+<li>通过收集新数据创造特征</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>模型太简单: 欠拟合</li>
+<li>模型太复杂: 过拟合</li>
+</ul>
+</li>
+</ol>
+<ol start="15">
+<li>如果你的模型在训练数据上表现很好, 但是应用到新的实例上的泛化结果却很糟糕, 是怎么回事? 能提出三种可能的解决方案吗?<ul>
+<li>模型在训练数据上过拟合了.</li>
+<li>解决方法:<ul>
+<li>引入更多数据.</li>
+<li>对模型进行化简(对模型进行正则化, 选择更简单模型, 减少输入特征)</li>
+<li>减少训练数据中的噪声</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="16">
+<li><p>什么是测试集, 为什么要使用测试集</p>
+<ul>
+<li>测试集: 用于<strong>评估</strong>模型在新实例的泛化误差, 用于模型上线前的测试评估.</li>
+<li><strong>不用于模型选择</strong>, 最后才能去看测试集.</li>
+</ul>
+</li>
+<li><p>验证集的目的是什么?</p>
+<ul>
+<li>用于比较不同的模型, 来选择最佳的模型和调整超参数.</li>
+</ul>
+</li>
+</ol>
+<ol start="18">
+<li>如何使用测试集调整超参数会出现什么问题?<ul>
+<li>出现模型在训练+测试集上的过拟合, 导致测试集误差过于乐观, 上线后性能GG. </li>
+</ul>
+</li>
+</ol>
+<ol start="19">
+<li>什么是交叉验证? 它为什么比验证集更好?<ul>
+<li>交叉验证: 将训练集分成若干个互补子集, 然后每个模型都通过这些子集的不同组合来训练, 之后用剩余的子集进行验证.<ul>
+<li><em>模型和超参数确定后, 再对整个训练集进行一次训练, 得到用于到测试集上评估的模型.</em></li>
+</ul>
+</li>
+<li>不需要单独划分一块验证集, 节省了宝贵的训练数据.</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://aweffr.github.io/2019/02/18/hands-on-problem-set-1/" data-id="cjs9yacme00031zv8563g0yhl" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hands-On-Machine-Learning/">Hands On Machine Learning</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/02/18/git-windows-config-path/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">git config --global 的记录被写到了哪里?</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hands-On-Machine-Learning/">Hands On Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/初始化/">初始化</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Hands-On-Machine-Learning/" style="font-size: 10px;">Hands On Machine Learning</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/初始化/" style="font-size: 10px;">初始化</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/18/hands-on-problem-set-1/">Hands-On ML 第一章 Notes &amp; Exercises</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/18/git-windows-config-path/">git config --global 的记录被写到了哪里?</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/17/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 aweffr<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
